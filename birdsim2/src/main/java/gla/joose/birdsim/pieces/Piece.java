@@ -23,6 +23,7 @@ public abstract class Piece extends Observable {
 	public void paint(Graphics g, Rectangle r){
 		if(paintBehaviour.getClass() == PaintBird.class) paintBehaviour.paint(g, r,(Bird)this);
 		else if(paintBehaviour.getClass() == PaintGrain.class) paintBehaviour.paint(g, r,(Grain)this);
+		else if(paintBehaviour.getClass() == PaintPoisonGrain.class) paintBehaviour.paint(g, r,(PoisonGrain)this);
 	}
 	
     protected Board board;

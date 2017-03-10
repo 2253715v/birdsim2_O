@@ -23,6 +23,7 @@ import behaviours.UpdateStockBehaviour;
 import gla.joose.birdsim.pieces.Bird;
 import gla.joose.birdsim.pieces.Grain;
 import gla.joose.birdsim.pieces.Piece;
+import gla.joose.birdsim.pieces.PoisonGrain;
 
 
 /**
@@ -45,6 +46,8 @@ public abstract class Board extends Observable implements Observer {
     protected boolean starveBirds;
     protected int noofbirds;
     protected int noofgrains;
+
+    protected int noofpoisonGrains;
     
     
     FlyBehaviour flyb;
@@ -65,6 +68,7 @@ public abstract class Board extends Observable implements Observer {
     	if(b.getClass() == FlockBoard.class) initb.doInitBoard((FlockBoard) b);
     	else if(b.getClass() == StaticForageBoard.class) initb.doInitBoard((StaticForageBoard)b);
     	else if(b.getClass() == MovingForageBoard.class) initb.doInitBoard((MovingForageBoard)b);
+    	else if(b.getClass() == PoisonBoard.class) initb.doInitBoard((PoisonBoard)b);
     }
     
     public void setUpdateStockBehaviour(UpdateStockBehaviour beHav){
@@ -75,6 +79,7 @@ public abstract class Board extends Observable implements Observer {
     	if(b.getClass() == FlockBoard.class) updStockb.doUpdateStock((FlockBoard)b);
     	else if(b.getClass() == StaticForageBoard.class) updStockb.doUpdateStock((StaticForageBoard)b);
     	else if(b.getClass() == MovingForageBoard.class) updStockb.doUpdateStock((MovingForageBoard)b);
+    	else if(b.getClass() == PoisonBoard.class) updStockb.doUpdateStock((PoisonBoard)b);
     }
 
     /**
@@ -143,13 +148,17 @@ public abstract class Board extends Observable implements Observer {
 		synchronized(allPieces){
 			noofbirds = 0;
 			noofgrains = 0;
+			noofpoisonGrains =0;
 			for (int i=0;i< getAllPieces().size(); i++) {
                 Piece piece = getAllPieces().get(i);
-                if(piece instanceof Grain){
+                if((piece instanceof Grain) && !(piece instanceof PoisonGrain)){
                 	noofgrains = noofgrains +1;
                 }
                 else if(piece instanceof Bird){
                 	noofbirds = noofbirds +1;
+                }
+                else if(piece instanceof PoisonGrain){
+                	noofpoisonGrains = noofpoisonGrains +1;
                 }
 			}
 			

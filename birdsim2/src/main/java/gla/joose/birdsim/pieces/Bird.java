@@ -8,6 +8,7 @@ import java.awt.Color;
 public class Bird extends Piece {
     
     public Color color;
+    public int counter;
     
     /**
      * Hatches a <code>Bird</code>.
@@ -25,5 +26,8 @@ public class Bird extends Piece {
         this.color = color;
     }
     
+     public int count (){return counter++;}
+     public int reset(){return counter=0;}
+     public int overdose(){return counter=10;}
     
 }

@@ -23,6 +23,8 @@ public class RandomFly implements FlyBehaviour {
         	randCol = b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
         	bird.moveTo(randRow, randCol);
     		bird.setSpeed(20);
+    		bird.count();
+    		if(bird.counter==10)break;
 			
 		} 
 		bird.remove();

@@ -11,7 +11,7 @@ public class PoisonUpdate implements UpdateStockBehaviour {
 			sb.updateStock();
 			sb.noOfBirdsLabel.setText("#birds: "+sb.noofbirds);
 			sb.noOfGrainsLabel.setText("#grains: "+sb.noofgrains);
-			sb.noOfPoisonGrainsLabel.setText("#poison: "+sb.noofPoisongrains);
+			sb.noOfPoisonGrainsLabel.setText("#poison: "+sb.noofpoisonGrains);
 		}
 	}
 }

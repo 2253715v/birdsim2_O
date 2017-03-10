@@ -11,6 +11,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gla.joose.birdsim.pieces.Bird;
+import gla.joose.birdsim.pieces.Grain;
+import gla.joose.birdsim.pieces.Piece;
+import gla.joose.birdsim.pieces.PoisonGrain;
+
 public class PoisonBoard extends Board {
 	
 	JButton poisonBirdsButton;
@@ -27,12 +32,11 @@ public class PoisonBoard extends Board {
     JLabel noOfBirdsLabel;
     
     Thread runningthread;
-	public int noofPoisongrains;
 
 	public PoisonBoard(int rows, int columns) {
 		super(rows, columns);
-		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
 	public void initBoard(final JFrame frame) {
@@ -75,9 +79,11 @@ public class PoisonBoard extends Board {
         }});
 
         frame.pack();
-        frame.setSize(650, 650);
+        frame.setSize(750, 650);
         frame.setVisible(true);
         		
 	}
+	
+	
 
 }

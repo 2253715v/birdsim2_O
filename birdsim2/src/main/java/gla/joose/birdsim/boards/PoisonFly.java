@@ -96,7 +96,8 @@ public class PoisonFly implements FlyBehaviour {
 							//bingo -food found (eat and move away)
 							Grain grain = (Grain)d.getTargetpiece();
 							grain.deplete();
-							if(grain.getClass() == PoisonGrain.class)break;
+							if(grain instanceof PoisonGrain){bird.overdose();}
+							else if((grain instanceof Grain) && !(grain instanceof PoisonGrain)){bird.count();}
 
 							int randRowf = b.rand.nextInt((b.getRows() - 3) + 1) + 0;
 			            	int randColf= b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
@@ -104,11 +105,11 @@ public class PoisonFly implements FlyBehaviour {
 							grain.setSpeed(10);
 							if(b.starveBirds){
 		                		grain.remove();
-		                		b.doUpdateStock((MovingForageBoard)b);
+		                		b.doUpdateStock((PoisonBoard)b);
 		                	}
 							else if(grain.getRemaining() <=0){
 			        			grain.remove();	
-			        			b.doUpdateStock((MovingForageBoard)b);
+			        			b.doUpdateStock((PoisonBoard)b);
 			        		} 
 			        		int randRow1 = b.rand.nextInt((b.getRows() - 3) + 1) + 0;
 			            	int randCol2 = b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
@@ -163,6 +164,8 @@ public class PoisonFly implements FlyBehaviour {
 							//bingo -food found (eat and move away)
 							Grain grain = (Grain)d.getTargetpiece();
 							grain.deplete();
+							if(grain instanceof PoisonGrain){bird.overdose();}
+							else if((grain instanceof Grain) && !(grain instanceof PoisonGrain)){bird.count();}
 							
 							int randRowf = b.rand.nextInt((b.getRows() - 3) + 1) + 0;
 			            	int randColf= b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
@@ -171,11 +174,11 @@ public class PoisonFly implements FlyBehaviour {
 
 							if(b.starveBirds){
 		                		grain.remove();
-		                		b.doUpdateStock((MovingForageBoard)b);
+		                		b.doUpdateStock((PoisonBoard)b);
 		                	}
 							else if(grain.getRemaining() <=0){
 			        			grain.remove();	
-			        			b.doUpdateStock((MovingForageBoard)b);
+			        			b.doUpdateStock((PoisonBoard)b);
 			        		} 
 			        		int randRow1 = b.rand.nextInt((b.getRows() - 3) + 1) + 0;
 			            	int randCol2 = b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
@@ -193,10 +196,11 @@ public class PoisonFly implements FlyBehaviour {
             	int randCol2 = b.rand.nextInt((b.getColumns() - 3) + 1) + 0; 
             	bird.moveTo(randRow1, randCol2);
 			}
-			
+			if(bird.counter==10){break;}
 		} 
 		bird.remove();
 		b.doUpdateStock((PoisonBoard)b);
        
 	}
+
 }

@@ -6,6 +6,8 @@ public class PoisonGrain extends Grain {
 	float remaining = 1.0f; // fraction fo the grain remaining
 
 	public PoisonGrain() {
+		super();
+		
 		// TODO Auto-generated constructor stub
 	}
 

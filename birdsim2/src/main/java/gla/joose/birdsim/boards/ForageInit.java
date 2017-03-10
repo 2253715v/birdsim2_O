@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import behaviours.InitBehaviour;
 import gla.joose.birdsim.pieces.Grain;
 import gla.joose.birdsim.pieces.PaintGrain;
+import gla.joose.birdsim.pieces.PaintPoisonGrain;
+import gla.joose.birdsim.pieces.PoisonGrain;
 
 public class ForageInit implements InitBehaviour {
 
@@ -102,3 +104,5 @@ public class ForageInit implements InitBehaviour {
 	}
 
 }
+
+
